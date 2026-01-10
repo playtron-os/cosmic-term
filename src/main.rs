@@ -90,6 +90,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut shell_program_opt = None;
     let mut shell_args = Vec::new();
     let mut daemonize = true;
+    let mut start_maximized = false;
     // Parse the arguments using clap_lex
     while let Some(arg) = raw_args.next_os(&mut cursor) {
         match arg.to_str() {
@@ -106,6 +107,9 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             Some("--no-daemon") => {
                 daemonize = false;
+            }
+            Some("--maximize") | Some("-m") => {
+                start_maximized = true;
             }
             Some("-e") | Some("--command") | Some("--") => {
                 // Handle the '--command' or '-e' flag
@@ -189,6 +193,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         config,
         startup_options,
         term_config,
+        start_maximized,
     };
 
     // Run the cosmic app
@@ -204,8 +209,11 @@ Designed for the COSMIC™ desktop environment, cosmic-term is a libcosmic-based
 
 Project home page: https://github.com/pop-os/cosmic-term
 Options:
-  --help     Show this message
-  --version  Show the version of cosmic-term"#
+  -m, --maximize  Start maximized
+  --no-daemon     Do not daemonize
+  -e, --command   Execute command
+  --help          Show this message
+  --version       Show the version of cosmic-term"#
     );
 }
 
@@ -215,6 +223,7 @@ pub struct Flags {
     config: Config,
     startup_options: Option<tty::Options>,
     term_config: term::Config,
+    start_maximized: bool,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1595,7 +1604,14 @@ impl Application for App {
         };
 
         app.set_curr_font_weights_and_stretches();
-        let command = Task::batch([app.update_config(), app.update_title(None)]);
+        let mut tasks = vec![app.update_config(), app.update_title(None)];
+
+        // Maximize window if requested via command line
+        if flags.start_maximized {
+            tasks.push(app.core.maximize(None, true));
+        }
+
+        let command = Task::batch(tasks);
 
         (app, command)
     }
