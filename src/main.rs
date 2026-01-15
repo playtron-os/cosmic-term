@@ -91,6 +91,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut shell_args = Vec::new();
     let mut daemonize = true;
     let mut start_maximized = false;
+    let mut no_headerbar = false;
     // Parse the arguments using clap_lex
     while let Some(arg) = raw_args.next_os(&mut cursor) {
         match arg.to_str() {
@@ -107,6 +108,9 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             Some("--no-daemon") => {
                 daemonize = false;
+            }
+            Some("--no-headerbar") => {
+                no_headerbar = true;
             }
             Some("--maximize") | Some("-m") => {
                 start_maximized = true;
@@ -194,6 +198,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         startup_options,
         term_config,
         start_maximized,
+        no_headerbar,
     };
 
     // Run the cosmic app
@@ -211,6 +216,7 @@ Project home page: https://github.com/pop-os/cosmic-term
 Options:
   -m, --maximize  Start maximized
   --no-daemon     Do not daemonize
+  --no-headerbar  Hide the header bar (for embedding)
   -e, --command   Execute command
   --help          Show this message
   --version       Show the version of cosmic-term"#
@@ -224,6 +230,7 @@ pub struct Flags {
     startup_options: Option<tty::Options>,
     term_config: term::Config,
     start_maximized: bool,
+    no_headerbar: bool,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -481,6 +488,8 @@ pub struct App {
     profile_expanded: Option<ProfileId>,
     show_advanced_font_settings: bool,
     modifiers: Modifiers,
+    /// Command-line flag to force hide the header bar (for embedding)
+    no_headerbar: bool,
     #[cfg(feature = "password_manager")]
     password_mgr: password_manager::PasswordManager,
 }
@@ -578,8 +587,12 @@ impl App {
             }
         }
 
-        // Set headerbar state
-        self.core.window.show_headerbar = self.config.show_headerbar;
+        // Set headerbar state (command-line flag overrides config)
+        self.core.window.show_headerbar = if self.no_headerbar {
+            false
+        } else {
+            self.config.show_headerbar
+        };
 
         // Update application theme
         cosmic::command::set_theme(theme)
@@ -1431,7 +1444,12 @@ impl Application for App {
     /// Creates the application, and optionally emits command on initialize.
     fn init(mut core: Core, flags: Self::Flags) -> (Self, Task<Self::Message>) {
         core.window.content_container = false;
-        core.window.show_headerbar = flags.config.show_headerbar;
+        // Use command-line flag if specified, otherwise use config
+        core.window.show_headerbar = if flags.no_headerbar {
+            false
+        } else {
+            flags.config.show_headerbar
+        };
 
         // Update font name from config
         {
@@ -1599,6 +1617,7 @@ impl Application for App {
             profile_expanded: None,
             show_advanced_font_settings: false,
             modifiers: Modifiers::empty(),
+            no_headerbar: flags.no_headerbar,
             #[cfg(feature = "password_manager")]
             password_mgr: Default::default(),
         };
