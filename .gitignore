@@ -10,3 +10,6 @@
 /.idea/
 nohup.out
 dist/
+.task
+.cache
+node_modules
