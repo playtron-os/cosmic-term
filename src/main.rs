@@ -24,7 +24,6 @@ use cosmic::{
     widget::{self, DndDestination, PaneGrid, about::About, button, pane_grid, segmented_button},
 };
 use cosmic::{Apply, surface};
-use cosmic_files::dialog::{Dialog, DialogKind, DialogMessage, DialogResult, DialogSettings};
 use cosmic_text::{Family, Stretch, Weight, fontdb::FaceInfo};
 use localize::LANGUAGE_SORTER;
 use std::{
@@ -351,9 +350,9 @@ pub enum Message {
     ColorSchemeDelete(ColorSchemeKind, ColorSchemeId),
     ColorSchemeExpand(ColorSchemeKind, Option<ColorSchemeId>),
     ColorSchemeExport(ColorSchemeKind, Option<ColorSchemeId>),
-    ColorSchemeExportResult(ColorSchemeKind, Option<ColorSchemeId>, DialogResult),
+    ColorSchemeExportResult(ColorSchemeKind, Option<ColorSchemeId>, Option<std::path::PathBuf>),
     ColorSchemeImport(ColorSchemeKind),
-    ColorSchemeImportResult(ColorSchemeKind, DialogResult),
+    ColorSchemeImportResult(ColorSchemeKind, Vec<std::path::PathBuf>),
     ColorSchemeRename(ColorSchemeKind, ColorSchemeId, String),
     ColorSchemeRenameSubmit,
     ColorSchemeTabActivate(widget::segmented_button::Entity),
@@ -368,7 +367,6 @@ pub enum Message {
     DefaultFontStretch(usize),
     DefaultFontWeight(usize),
     DefaultZoomStep(usize),
-    DialogMessage(DialogMessage),
     Drop(Option<(pane_grid::Pane, segmented_button::Entity, DndDrop)>),
     Find(bool),
     FindNext,
@@ -471,7 +469,6 @@ pub struct App {
     theme_names_light: Vec<String>,
     themes: HashMap<(String, ColorSchemeKind), TermColors>,
     context_page: ContextPage,
-    dialog_opt: Option<Dialog<Message>>,
     terminal_ids: HashMap<pane_grid::Pane, widget::Id>,
     find: bool,
     find_search_id: widget::Id,
@@ -1601,7 +1598,6 @@ impl Application for App {
             theme_names_light: Vec::new(),
             themes: HashMap::new(),
             context_page: ContextPage::Settings,
-            dialog_opt: None,
             terminal_ids,
             find: false,
             find_search_id: widget::Id::unique(),
@@ -1724,30 +1720,42 @@ impl Application for App {
                         .map(|color_scheme| color_scheme.name.clone()),
                     None => Some(format!("COSMIC {:?}", color_scheme_kind)),
                 } {
-                    if self.dialog_opt.is_none() {
-                        let (dialog, command) = Dialog::new(
-                            DialogSettings::new().kind(DialogKind::SaveFile {
-                                filename: format!("{}.ron", color_scheme_name),
-                            }),
-                            Message::DialogMessage,
-                            move |result| {
-                                Message::ColorSchemeExportResult(
+                    return cosmic::task::future(async move {
+                        use cosmic::dialog::file_chooser;
+                        let dialog = file_chooser::save::Dialog::new()
+                            .title("Export Color Scheme".to_string())
+                            .file_name(format!("{}.ron", color_scheme_name));
+                        match dialog.save_file().await {
+                            Ok(response) => {
+                                let path = response.url().and_then(|url| url.to_file_path().ok());
+                                action::app(Message::ColorSchemeExportResult(
                                     color_scheme_kind,
                                     color_scheme_id_opt,
-                                    result,
-                                )
-                            },
-                        );
-                        self.dialog_opt = Some(dialog);
-                        return command;
-                    }
+                                    path,
+                                ))
+                            }
+                            Err(file_chooser::Error::Cancelled) => {
+                                action::app(Message::ColorSchemeExportResult(
+                                    color_scheme_kind,
+                                    color_scheme_id_opt,
+                                    None,
+                                ))
+                            }
+                            Err(why) => {
+                                log::error!("failed to open save dialog: {:?}", why);
+                                action::app(Message::ColorSchemeExportResult(
+                                    color_scheme_kind,
+                                    color_scheme_id_opt,
+                                    None,
+                                ))
+                            }
+                        }
+                    });
                 }
             }
-            Message::ColorSchemeExportResult(color_scheme_kind, color_scheme_id_opt, result) => {
+            Message::ColorSchemeExportResult(color_scheme_kind, color_scheme_id_opt, path_opt) => {
                 //TODO: show errors in UI
-                self.dialog_opt = None;
-                if let DialogResult::Open(paths) = result {
-                    let path = &paths[0];
+                if let Some(path) = path_opt {
                     match color_scheme_id_opt {
                         Some(color_scheme_id) => {
                             if let Some(color_scheme) = self
@@ -1760,7 +1768,7 @@ impl Application for App {
                                     ron::ser::PrettyConfig::new(),
                                 ) {
                                     Ok(ron) => {
-                                        if let Err(err) = fs::write(path, ron) {
+                                        if let Err(err) = fs::write(&path, ron) {
                                             log::error!(
                                                 "failed to export {:?} to {:?}: {}",
                                                 color_scheme_id,
@@ -1799,7 +1807,7 @@ impl Application for App {
                                 ron::ser::PrettyConfig::new(),
                             ) {
                                 Ok(ron) => {
-                                    if let Err(err) = fs::write(path, ron) {
+                                    if let Err(err) = fs::write(&path, ron) {
                                         log::error!(
                                             "failed to export {:?} to {:?}: {}",
                                             color_scheme.name,
@@ -1824,20 +1832,38 @@ impl Application for App {
                 self.color_scheme_expanded = Some((color_scheme_kind, color_scheme_id_opt));
             }
             Message::ColorSchemeImport(color_scheme_kind) => {
-                if self.dialog_opt.is_none() {
-                    self.color_scheme_errors.clear();
-                    let (dialog, command) = Dialog::new(
-                        DialogSettings::new().kind(DialogKind::OpenMultipleFiles),
-                        Message::DialogMessage,
-                        move |result| Message::ColorSchemeImportResult(color_scheme_kind, result),
-                    );
-                    self.dialog_opt = Some(dialog);
-                    return command;
-                }
+                self.color_scheme_errors.clear();
+                return cosmic::task::future(async move {
+                    use cosmic::dialog::file_chooser;
+                    let dialog = file_chooser::open::Dialog::new()
+                        .title("Import Color Schemes");
+                    match dialog.open_files().await {
+                        Ok(response) => {
+                            let paths: Vec<std::path::PathBuf> = response
+                                .urls()
+                                .iter()
+                                .filter_map(|url| url.to_file_path().ok())
+                                .collect();
+                            action::app(Message::ColorSchemeImportResult(color_scheme_kind, paths))
+                        }
+                        Err(file_chooser::Error::Cancelled) => {
+                            action::app(Message::ColorSchemeImportResult(
+                                color_scheme_kind,
+                                Vec::new(),
+                            ))
+                        }
+                        Err(why) => {
+                            log::error!("failed to open file dialog: {:?}", why);
+                            action::app(Message::ColorSchemeImportResult(
+                                color_scheme_kind,
+                                Vec::new(),
+                            ))
+                        }
+                    }
+                });
             }
-            Message::ColorSchemeImportResult(color_scheme_kind, result) => {
-                self.dialog_opt = None;
-                if let DialogResult::Open(paths) = result {
+            Message::ColorSchemeImportResult(color_scheme_kind, paths) => {
+                if !paths.is_empty() {
                     self.color_scheme_errors.clear();
                     for path in &paths {
                         let mut file = match fs::File::open(path) {
@@ -2064,11 +2090,6 @@ impl Application for App {
                     log::warn!("failed to find zoom step with index {}", index);
                 }
             },
-            Message::DialogMessage(dialog_message) => {
-                if let Some(dialog) = &mut self.dialog_opt {
-                    return dialog.update(dialog_message);
-                }
-            }
             Message::Drop(Some((pane, entity, data))) => {
                 self.pane_model.set_focus(pane);
                 if let Ok(value) = shlex::try_join(data.paths.iter().filter_map(|p| p.to_str())) {
@@ -2834,17 +2855,14 @@ impl Application for App {
         vec![
             widget::button::custom(icon_cache_get("list-add-symbolic", 16))
                 .on_press(Message::TabNew)
-                .padding(8)
-                .class(style::Button::Icon)
+                .padding(6)
+                .class(style::Button::HeaderBar)
                 .into(),
         ]
     }
 
-    fn view_window(&self, window_id: window::Id) -> Element<'_, Message> {
-        match &self.dialog_opt {
-            Some(dialog) => dialog.view(window_id),
-            None => widget::text("Unknown window ID").into(),
-        }
+    fn view_window(&self, _window_id: window::Id) -> Element<'_, Message> {
+        widget::text("Unknown window ID").into()
     }
 
     /// Creates a view after each update.
@@ -3057,10 +3075,6 @@ impl Application for App {
                 }
                 Message::Config(update.config)
             }),
-            match &self.dialog_opt {
-                Some(dialog) => dialog.subscription(),
-                None => Subscription::none(),
-            },
         ])
     }
 }
