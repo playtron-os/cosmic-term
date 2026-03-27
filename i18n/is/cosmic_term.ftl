@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC Skjáhermir
+cosmic-terminal = Skjáhermir
 new-terminal = Nýr skjáhermir
 support = Stuðningur
 color-schemes = Litastef
@@ -59,7 +59,7 @@ zoom-out = Minni texti
 next-tab = Næsti flipi
 previous-tab = Fyrri flipi
 menu-color-schemes = Litastef...
-menu-about = Um COSMIC Skjáhermi...
+menu-about = Um Skjáhermi...
 default-font-stretch = Teygt á letri
 default-font-weight = Venjuleg leturþyngd
 default-bold-font-weight = Leturþyngd feitleturs

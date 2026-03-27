@@ -1,4 +1,4 @@
-cosmic-terminal = Terminale COSMIC
+cosmic-terminal = Terminale
 new-terminal = Nuovo terminale
 
 # Context Pages
@@ -108,6 +108,6 @@ split-vertical = Dividi verticalmente
 pane-toggle-maximize = Abilita o disabilita schermo intero
 menu-color-schemes = Schemi di colore...
 menu-settings = Impostazioni...
-menu-about = Informazioni su COSMIC Terminal...
+menu-about = Informazioni su Terminal...
 support = Supporto
 repository = Repository

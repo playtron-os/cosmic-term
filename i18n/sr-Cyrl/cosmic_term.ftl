@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC Терминал
+cosmic-terminal = Терминал
 new-terminal = Нови терминал
 
 # Context Pages
@@ -104,7 +104,7 @@ split-vertical = Подели вертикално
 pane-toggle-maximize = Максимизуј
 menu-color-schemes = Шеме боја...
 menu-settings = Подешавања...
-menu-about = О COSMIC Терминалу...
+menu-about = О Терминалу...
 repository = Репозиторијум
 support = Подршка
 working-directory = Тренутни директоријум

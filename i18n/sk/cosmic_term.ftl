@@ -1,4 +1,4 @@
-cosmic-terminal = Terminál COSMIC
+cosmic-terminal = Terminál
 new-terminal = Nový terminál
 
 # Kontextové stránky
@@ -108,6 +108,6 @@ split-vertical = Rozdeliť vertikálne
 pane-toggle-maximize = Prepnúť maximalizáciu
 menu-color-schemes = Farebné schémy...
 menu-settings = Nastavenia...
-menu-about = O Termináli COSMIC...
+menu-about = O Termináli...
 repository = Repozitár
 support = Podpora

@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC Terminal
+cosmic-terminal = Terminal
 new-terminal = Ny terminal
 
 # Context Pages
@@ -112,7 +112,7 @@ pane-toggle-maximize = Växla maximerad
 clear-scrollback = Töm tillbakarullning
 menu-color-schemes = Färgscheman…
 menu-settings = Inställningar…
-menu-about = Om COSMIC Terminal…
+menu-about = Om Terminal…
 repository = Källkod
 support = Support
 # Lösenordshanterare

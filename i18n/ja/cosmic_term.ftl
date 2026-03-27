@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC端末
+cosmic-terminal = 端末
 new-terminal = 新しい端末
 
 # Context Pages
@@ -108,6 +108,6 @@ split-vertical = 左右に分割
 pane-toggle-maximize = 最大化を切替
 menu-color-schemes = カラースキーム…
 menu-settings = 設定...
-menu-about = COSMIC端末について...
+menu-about = 端末について...
 repository = リポジトリ
 support = サポート

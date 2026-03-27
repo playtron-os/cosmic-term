@@ -208,7 +208,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 fn print_help() {
     println!(
-        r#"COSMIC Terminal
+        r#"Terminal
 Designed for the COSMIC™ desktop environment, cosmic-term is a libcosmic-based terminal emulator.
 
 Project home page: https://github.com/pop-os/cosmic-term
@@ -350,7 +350,11 @@ pub enum Message {
     ColorSchemeDelete(ColorSchemeKind, ColorSchemeId),
     ColorSchemeExpand(ColorSchemeKind, Option<ColorSchemeId>),
     ColorSchemeExport(ColorSchemeKind, Option<ColorSchemeId>),
-    ColorSchemeExportResult(ColorSchemeKind, Option<ColorSchemeId>, Option<std::path::PathBuf>),
+    ColorSchemeExportResult(
+        ColorSchemeKind,
+        Option<ColorSchemeId>,
+        Option<std::path::PathBuf>,
+    ),
     ColorSchemeImport(ColorSchemeKind),
     ColorSchemeImportResult(ColorSchemeKind, Vec<std::path::PathBuf>),
     ColorSchemeRename(ColorSchemeKind, ColorSchemeId, String),
@@ -1835,8 +1839,7 @@ impl Application for App {
                 self.color_scheme_errors.clear();
                 return cosmic::task::future(async move {
                     use cosmic::dialog::file_chooser;
-                    let dialog = file_chooser::open::Dialog::new()
-                        .title("Import Color Schemes");
+                    let dialog = file_chooser::open::Dialog::new().title("Import Color Schemes");
                     match dialog.open_files().await {
                         Ok(response) => {
                             let paths: Vec<std::path::PathBuf> = response
@@ -1846,12 +1849,9 @@ impl Application for App {
                                 .collect();
                             action::app(Message::ColorSchemeImportResult(color_scheme_kind, paths))
                         }
-                        Err(file_chooser::Error::Cancelled) => {
-                            action::app(Message::ColorSchemeImportResult(
-                                color_scheme_kind,
-                                Vec::new(),
-                            ))
-                        }
+                        Err(file_chooser::Error::Cancelled) => action::app(
+                            Message::ColorSchemeImportResult(color_scheme_kind, Vec::new()),
+                        ),
                         Err(why) => {
                             log::error!("failed to open file dialog: {:?}", why);
                             action::app(Message::ColorSchemeImportResult(

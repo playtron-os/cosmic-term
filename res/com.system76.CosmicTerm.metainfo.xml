@@ -8,18 +8,18 @@
   <update_contact>jeremy@system76.com</update_contact>
   <url type="homepage">https://github.com/pop-os/cosmic-term</url>
   <url type="bugtracker">https://github.com/pop-os/cosmic-term</url>
-  <name>COSMIC Terminal</name>
-  <name xml:lang="ar">طرفية COSMIC</name>
-  <name xml:lang="cs">Terminál COSMIC</name>
-  <name xml:lang="pl">Terminal COSMIC</name>
-  <name xml:lang="hu">COSMIC Terminál</name>
+  <name>Terminal</name>
+  <name xml:lang="ar">طرفية</name>
+  <name xml:lang="cs">Terminál</name>
+  <name xml:lang="pl">Terminal</name>
+  <name xml:lang="hu">Terminál</name>
   <name xml:lang="pt_BR">Terminal</name>
   <name xml:lang="pt">Terminal</name>
-  <name xml:lang="sk">Terminál COSMIC</name>
-  <name xml:lang="es">Terminal COSMIC</name>
-  <name xml:lang="it">Terminale di COSMIC</name>
-  <name xml:lang="sv">COSMIC Terminal</name>
-  <summary>Terminal emulator for the COSMIC desktop</summary>
+  <name xml:lang="sk">Terminál</name>
+  <name xml:lang="es">Terminal</name>
+  <name xml:lang="it">Terminale</name>
+  <name xml:lang="sv">Terminal</name>
+  <summary>Terminal emulator</summary>
   <summary xml:lang="ar">محاكي طرفي لسطح مكتب COSMIC</summary>
   <summary xml:lang="cs">Emulátor terminálu pro pracovní prostředí COSMIC</summary>
   <summary xml:lang="pl">Emulator terminala dla pulpitu COSMIC</summary>

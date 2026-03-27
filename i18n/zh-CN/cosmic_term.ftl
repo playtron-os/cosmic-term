@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC 终端
+cosmic-terminal = 终端
 new-terminal = 新建终端
 
 # Context Pages
@@ -108,7 +108,7 @@ split-vertical = 垂直分割
 pane-toggle-maximize = 切换最大化
 menu-color-schemes = 配色方案...
 menu-settings = 设置...
-menu-about = 关于 COSMIC 终端...
+menu-about = 关于终端...
 repository = 仓库
 support = 支持
 open-link = 打开链接

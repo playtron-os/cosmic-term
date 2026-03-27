@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC Uçbirim
+cosmic-terminal = Uçbirim
 new-terminal = Yeni uçbirim
 
 # Context Pages
@@ -104,7 +104,7 @@ split-vertical = Dikey böl
 pane-toggle-maximize = Tam ekrana geç
 menu-color-schemes = Renk şemaları...
 menu-settings = Ayarlar...
-menu-about = COSMIC Uçbirim hakkında...
+menu-about = Uçbirim hakkında...
 repository = Depo
 support = Destek
 working-directory = Çalışma dizini

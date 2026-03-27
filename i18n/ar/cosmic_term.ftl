@@ -1,4 +1,4 @@
-cosmic-terminal = طرفية COSMIC
+cosmic-terminal = طرفية
 new-terminal = طرفية جديدة
 
 # Context Pages
@@ -110,7 +110,7 @@ split-vertical = اقسم عموديًا
 pane-toggle-maximize = بدِّل التكبير
 menu-color-schemes = مخططات الألوان...
 menu-settings = الإعدادات...
-menu-about = حول طرفية COSMIC...
+menu-about = حول طرفية...
 passwords-title = كلمات السر
 add-password = أضف كلمة سر
 open-link = افتح الرابط

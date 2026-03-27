@@ -1,4 +1,4 @@
-cosmic-terminal = Teirminéal COSMIC
+cosmic-terminal = Teirminéal
 new-terminal = Teirminéal nua
 
 # Context Pages
@@ -108,7 +108,7 @@ split-vertical = Scoilt ingearach
 pane-toggle-maximize = Scoránaigh uasmhéadú
 menu-color-schemes = Scéimeanna dathanna...
 menu-settings = Socruithe...
-menu-about = Maidir le COSMIC Teirminéal...
+menu-about = Maidir le Teirminéal...
 repository = Stór
 support = Tacaíocht
 open-link = Oscail an Nasc

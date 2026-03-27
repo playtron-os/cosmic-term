@@ -1,4 +1,4 @@
-cosmic-terminal = Terminal de COSMIC
+cosmic-terminal = Terminal
 new-terminal = Nueva terminal
 
 # Context Pages
@@ -107,7 +107,7 @@ split-vertical = Dividir vertical
 pane-toggle-maximize = Alternar maximizar
 menu-color-schemes = Esquemas de color...
 menu-settings = Configuración...
-menu-about = Acerca de la terminal de COSMIC...
+menu-about = Acerca de la terminal...
 repository = Repositorio
 support = Apoyo
 clear-scrollback = Limpiar historial de desplazamiento

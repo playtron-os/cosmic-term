@@ -1,4 +1,4 @@
-cosmic-terminal = Тэрмінал COSMIC
+cosmic-terminal = Тэрмінал
 new-terminal = Новы тэрмінал
 
 # Context Pages
@@ -107,6 +107,6 @@ split-vertical = Падзяліць па вертыкалі
 pane-toggle-maximize = Пераключыць разгорнутасць
 menu-color-schemes = Колеравыя схемы...
 menu-settings = Налады...
-menu-about = Пра Тэрмінал COSMIC...
+menu-about = Пра Тэрмінал...
 repository = Рэпазіторый
 support = Падтрымка

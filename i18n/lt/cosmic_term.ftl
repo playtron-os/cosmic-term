@@ -1,6 +1,6 @@
 name = Pavadinimas
 delete = Ištrinti
-cosmic-terminal = COSMIC Terminal
+cosmic-terminal = Terminal
 new-terminal = Naujas terminalas
 repository = Saugykla
 support = Palaikymas
@@ -66,7 +66,7 @@ split-vertical = Skaidyti vertikaliai
 pane-toggle-maximize = Perjungti maksimalų padidinimą
 menu-color-schemes = Spalvų schemos...
 menu-settings = Nustatymai...
-menu-about = Apie COSMIC Terminal...
+menu-about = Apie Terminal...
 menu-password-manager = Slaptažodžiai...
 passwords-title = Slaptažodžiai
 add-password = Pridėti Slaptažodį

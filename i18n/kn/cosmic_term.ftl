@@ -1,4 +1,4 @@
-cosmic-terminal = ಕಾಸ್ಮಿಕ್ ಟರ್ಮಿನಲ್
+cosmic-terminal = ಟರ್ಮಿನಲ್
 new-terminal = ಹೊಸ ಟರ್ಮಿನಲ್
 
 ## About

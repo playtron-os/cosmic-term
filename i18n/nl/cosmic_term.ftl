@@ -1,4 +1,4 @@
-cosmic-terminal = COSMIC Terminal
+cosmic-terminal = Terminal
 new-terminal = Nieuwe terminal
 
 # Context Pages
@@ -108,6 +108,6 @@ split-vertical = Splits verticaal
 pane-toggle-maximize = Gemaximaliseerd
 menu-color-schemes = Kleurenpaletten...
 menu-settings = Instellingen…
-menu-about = Over COSMIC Terminal…
+menu-about = Over Terminal…
 support = Ondersteuning
 repository = Bibliotheek
