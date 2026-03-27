@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/playtron-os/cosmic-term/compare/v1.0.1...v1.1.0) (2026-03-27)
+
+
+### Features
+
+* remove cosmic from app name ([8bc5d3e](https://github.com/playtron-os/cosmic-term/commit/8bc5d3ebf0c6b74443ec57f58fd418721a07ea63))
+* use playtronos libcosmic and replace cosmic-files for xdg file picker ([a9e2a32](https://github.com/playtron-os/cosmic-term/commit/a9e2a327b620eb2b18fa7ca0bcecb25b21aacc36))
+
 ## [1.0.1](https://github.com/playtron-os/cosmic-term/compare/v1.0.0...v1.0.1) (2026-02-04)
 
 
