@@ -1,6 +1,6 @@
 Name:           cosmic-term
 Epoch:          1
-Version: 1.1.1
+Version: 1.1.2
 Release:        1%{?dist}
 Summary:        Terminal Emulator (Playtron fork)
 

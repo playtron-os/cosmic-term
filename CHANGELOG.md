@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/playtron-os/cosmic-term/compare/v1.1.1...v1.1.2) (2026-04-24)
+
+
+### Bug Fixes
+
+* update libcosmic ([9c441b7](https://github.com/playtron-os/cosmic-term/commit/9c441b734498b204a0c9f95d8b0ef5756c6785c6))
+
 ## [1.1.1](https://github.com/playtron-os/cosmic-term/compare/v1.1.0...v1.1.1) (2026-04-09)
 
 
