@@ -61,17 +61,17 @@ debug = true
 
 
 [patch.'https://github.com/pop-os/libcosmic']
-libcosmic = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-cosmic-config = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-cosmic-config-derive = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-cosmic-theme = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_core = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_futures = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_graphics = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_renderer = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_runtime = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_tiny_skia = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_wgpu = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_widget = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
-iced_winit = { git = "https://github.com/playtron-os/libcosmic.git", rev = "2a9deff09" }
+libcosmic = { git = "https://github.com/playtron-os/libcosmic.git" }
+cosmic-config = { git = "https://github.com/playtron-os/libcosmic.git" }
+cosmic-config-derive = { git = "https://github.com/playtron-os/libcosmic.git" }
+cosmic-theme = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_core = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_futures = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_graphics = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_renderer = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_runtime = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_tiny_skia = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_wgpu = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_widget = { git = "https://github.com/playtron-os/libcosmic.git" }
+iced_winit = { git = "https://github.com/playtron-os/libcosmic.git" }
