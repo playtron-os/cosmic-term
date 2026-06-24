@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use cosmic::iced::Point;
-use cosmic::widget::Column;
 use cosmic::widget::menu::key_bind::KeyBind;
 use cosmic::widget::menu::{Item as MenuItem, menu_button};
+use cosmic::widget::{Column, space};
 use cosmic::{
     Element,
     app::Core,
-    iced::{
-        Background, Length, advanced::widget::text::Style as TextStyle, widget::horizontal_space,
-    },
-    iced_core::Border,
+    iced::core::Border,
+    iced::{Background, Length, advanced::widget::text::Style as TextStyle},
     theme,
     widget::{
         self, divider,
@@ -28,6 +26,7 @@ static MENU_ID: LazyLock<cosmic::widget::Id> =
 #[derive(Debug, Clone)]
 pub struct MenuState {
     pub position: Option<Point>,
+    pub local_position: Option<Point>,
     pub link: Option<String>,
 }
 
@@ -50,6 +49,7 @@ pub fn context_menu<'a>(
         color.alpha *= 0.75;
         TextStyle {
             color: Some(color.into()),
+            ..Default::default()
         }
     }
 
@@ -57,7 +57,7 @@ pub fn context_menu<'a>(
         let key = find_key(&action);
         menu_button(vec![
             widget::text(label).into(),
-            horizontal_space().into(),
+            space::horizontal().into(),
             widget::text(key)
                 .class(theme::Text::Custom(key_style))
                 .into(),
@@ -68,7 +68,7 @@ pub fn context_menu<'a>(
     let menu_checkbox = |label, value, action| {
         menu_button(vec![
             widget::text(label).into(),
-            widget::horizontal_space().into(),
+            widget::space::horizontal().into(),
             widget::toggler(value)
                 .on_toggle(move |_| Message::TabContextAction(entity, action))
                 .size(16.0)
@@ -117,7 +117,11 @@ pub fn context_menu<'a>(
             0,
             Element::from(menu_item(fl!("open-link"), Action::LaunchUrlByMenu)),
         );
-        rows.insert(1, Element::from(divider::horizontal::light()));
+        rows.insert(
+            1,
+            Element::from(menu_item(fl!("copy-link"), Action::CopyUrlByMenu)),
+        );
+        rows.insert(2, Element::from(divider::horizontal::light()));
     }
     let content = Column::with_children(rows);
     widget::container(content)
@@ -138,7 +142,7 @@ pub fn context_menu<'a>(
                 ..Default::default()
             }
         })
-        .width(Length::Fixed(240.0))
+        .width(Length::Fixed(360.0))
         .into()
 }
 
@@ -202,6 +206,8 @@ pub fn menu_bar<'a>(
 
     //TODO: what to do if there are no profiles?
 
+    let color_scheme_kind = config.color_scheme_kind(core.system_theme());
+
     responsive_menu_bar()
         .item_height(ItemHeight::Dynamic(40))
         .item_width(ItemWidth::Uniform(320))
@@ -263,7 +269,12 @@ pub fn menu_bar<'a>(
                         MenuItem::Button(
                             fl!("menu-color-schemes"),
                             None,
-                            Action::ColorSchemes(config.color_scheme_kind()),
+                            Action::ColorSchemes(color_scheme_kind),
+                        ),
+                        MenuItem::Button(
+                            fl!("menu-keyboard-shortcuts"),
+                            None,
+                            Action::KeyboardShortcuts,
                         ),
                         MenuItem::Button(fl!("menu-settings"), None, Action::Settings),
                         #[cfg(feature = "password_manager")]

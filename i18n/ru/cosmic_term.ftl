@@ -1,4 +1,6 @@
 cosmic-terminal = Терминал
+comment = Эмулятор терминала для рабочей среды COSMIC
+keywords = Команда;Оболочка;Терминал;Консоль;
 new-terminal = Новый терминал
 
 # Context Pages
@@ -13,7 +15,7 @@ color-schemes = Цветовые схемы
 rename = Переименовать
 export = Экспортировать
 delete = Удалить
-import = Импортировать
+import = Импорт
 import-errors = Ошибки при импорте
 
 ## Profiles
@@ -36,11 +38,11 @@ settings = Параметры
 
 ### Appearance
 
-appearance = Оформление
+appearance = Внешний вид
 theme = Тема
 match-desktop = Как в системе
-dark = Тёмное
-light = Светлое
+dark = Тёмная
+light = Светлая
 syntax-dark = Тёмная цветовая схема
 syntax-light = Светлая цветовая схема
 default-zoom-step = Шаг масштабирования
@@ -67,7 +69,7 @@ focus-follow-mouse = Фокус при наборе следует за мышь
 
 advanced = Дополнительно
 show-headerbar = Отображать заголовок
-show-header-description = Раскройте заголовок из меню правой кнопки мыши.
+show-header-description = Показ заголовка можно включить в контекстном меню
 # Find
 find-placeholder = Найти...
 find-previous = Найти ранее
@@ -111,3 +113,33 @@ menu-about = О Терминале...
 support = Поддержка
 repository = Репозиторий
 clear-scrollback = Очистить вывод команд
+add-another-keybinding = Добавить сочетание клавиш
+cancel = Отмена
+close-window = Закрыть окно
+copy-or-sigint = Копировать или SIGINT
+disable = Отключить
+focus-pane-down = Переместить фокус вниз
+focus-pane-left = Переместить фокус налево
+focus-pane-right = Переместить фокус направо
+focus-pane-up = Переместить фокус вверх
+keyboard-shortcuts = Сочетания клавиш
+menu-keyboard-shortcuts = Сочетания клавиш...
+no-shortcuts = Нет сочетаний клавиш
+password-manager = Менеджер паролей
+paste-primary = Вставить первичное выделение
+replace = Заменить
+reset-to-default = Вернуть по умолчанию
+shortcut-capture-hint = Нажмите комбинацию клавиш
+shortcut-group-clipboard = Буфер обмена
+shortcut-group-other = Прочие
+shortcut-group-tabs = Вкладки
+shortcut-group-window = Окно
+shortcut-group-zoom = Масштаб
+shortcut-replace-body = { $binding } уже присвоено { $existing }. Заменить его на { $new_action }?
+shortcut-replace-title = Заменить сочетание клавиш?
+tab-activate = Активировать вкладку { $number }
+toggle-fullscreen = Вкл./выкл. полноэкранный режим
+type-to-search = Введите для поиска...
+copy-link = Копировать ссылку
+tab-new-inherit-working-directory = В новых вкладках исп. текущий каталог
+tab-new-inherit-working-directory-description = Открывать новые вкладки в рабочем каталоге активной вкладки

@@ -36,7 +36,7 @@ settings = Socruithe
 
 ### Appearance
 
-appearance = Cuma
+appearance = Dealramh
 theme = Téama
 match-desktop = Meaitseáil deasc
 dark = Dorcha
@@ -67,7 +67,7 @@ focus-follow-mouse = Leanann fócas clóscríofa an luch
 
 advanced = Casta
 show-headerbar = Taispeáin ceanntásc
-show-header-description = Nocht an ceanntásc ón roghchlár cliceáil deas.
+show-header-description = Nocht an ceanntásc ón roghchlár cliceáil deas
 # Find
 find-placeholder = Aimsigh...
 find-previous = Aimsigh an ceann roimhe seo
@@ -117,3 +117,35 @@ passwords-title = Pasfhocail
 add-password = Cuir Pasfhocal leis
 password-input = Pasfhocal
 password-input-description = Cur síos
+add-another-keybinding = Cuir ceangal eochrach eile leis
+cancel = Cealaigh
+close-window = Dún an fhuinneog
+copy-or-sigint = Cóipeáil nó SIGINT
+disable = Díchumasaigh
+focus-pane-down = Painéal fócais síos
+focus-pane-left = Painéal fócais ar chlé
+focus-pane-right = Painéal fócais ar dheis
+focus-pane-up = Painéal fócais suas
+keyboard-shortcuts = Aicearraí méarchláir
+menu-keyboard-shortcuts = Aicearraí méarchláir...
+no-shortcuts = Gan aicearraí
+password-manager = Bainisteoir pasfhocal
+paste-primary = Greamaigh príomhúil
+replace = Athsholáthair
+reset-to-default = Athshocraigh go réamhshocraithe
+shortcut-capture-hint = Brúigh an teaglaim eochrach
+shortcut-group-clipboard = Gearrthaisce
+shortcut-group-other = Eile
+shortcut-group-tabs = Cluaisíní
+shortcut-group-window = Fuinneog
+shortcut-group-zoom = Súmáil
+shortcut-replace-body = Tá { $binding } sannta do { $existing } cheana féin. Cuir { $new_action } ina áit?
+shortcut-replace-title = Aicearra a athsholáthar?
+tab-activate = Gníomhachtaigh an cluaisín { $number }
+toggle-fullscreen = Scoraigh lánscáileán
+type-to-search = Clóscríobh le cuardach a dhéanamh...
+comment = Aithriseoir teirminéal don deasc COSMIC
+keywords = Ordú;Blaosc;Teirminéal;CLI;
+copy-link = Cóipeáil Nasc
+tab-new-inherit-working-directory = Úsáideann cluaisíní nua an eolaire reatha
+tab-new-inherit-working-directory-description = Oscail cluaisíní nua in eolaire oibre an chluaisín ghníomhaigh

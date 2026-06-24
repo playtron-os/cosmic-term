@@ -1,4 +1,6 @@
 cosmic-terminal = Terminál
+comment = Terminálemulátor a COSMIC asztali környezethez
+keywords = parancssor;héj;terminál;CLI;
 new-terminal = Új terminál
 
 # Context Pages
@@ -30,7 +32,7 @@ new-profile = Új profil
 make-default = Beállítás alapértelmezettként
 working-directory = Munkakönyvtár
 hold = Maradjon nyitva
-remain-open = Maradjon nyitva a gyermekfolyamat kilépése után
+remain-open = Maradjon nyitva a gyermekfolyamat kilépése után.
 
 ## Settings
 
@@ -56,7 +58,7 @@ default-font = Betűtípus
 default-font-size = Betűméret
 default-font-stretch = Betűszélesség
 default-font-weight = Normál betűsúly
-default-dim-font-weight = Halvány betűsúly
+default-dim-font-weight = Vékony betűsúly
 default-bold-font-weight = Félkövér betűsúly
 use-bright-bold = Félkövér szöveg világosítása
 
@@ -117,3 +119,33 @@ add-password = Jelszó hozzáadása
 password-input = Jelszó
 password-input-description = Leírás
 open-link = Hivatkozás megnyitása
+add-another-keybinding = Új gyorsbillentyű hozzáadása
+cancel = Mégse
+close-window = Ablak bezárása
+copy-or-sigint = Másolás vagy SIGINT
+disable = Letiltás
+focus-pane-down = Fókusz az alsó panelre
+focus-pane-left = Fókusz a bal oldali panelre
+focus-pane-right = Fókusz a jobb oldali panelre
+keyboard-shortcuts = Gyorsbillentyűk
+menu-keyboard-shortcuts = Gyorsbillentyűk…
+no-shortcuts = Nincsenek gyorsbillentyűk
+password-manager = Jelszókezelő
+focus-pane-up = Fókusz a felső panelre
+paste-primary = Elsődleges vágólap beillesztése
+replace = Csere
+reset-to-default = Visszaállítás alapértelmezettre
+shortcut-capture-hint = Nyomd meg a billentyűkombinációt
+shortcut-group-clipboard = Vágólap
+shortcut-group-other = Egyéb
+shortcut-group-tabs = Lapok
+shortcut-group-window = Ablak
+shortcut-group-zoom = Nagyítás
+shortcut-replace-body = A(z) { $binding } már hozzá van rendelve ehhez: { $existing }. Lecseréled erre: { $new_action }?
+shortcut-replace-title = Gyorsbillentyű cseréje?
+tab-activate = { $number }. lap aktiválása
+toggle-fullscreen = Teljes képernyő váltása
+type-to-search = Gépelj a kereséshez…
+copy-link = Hivatkozás másolása
+tab-new-inherit-working-directory = Az új lapok az aktuális könyvtárat használják
+tab-new-inherit-working-directory-description = Az új lapok az aktív lap munkakönyvtárában nyílnak meg

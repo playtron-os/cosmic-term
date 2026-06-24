@@ -12,7 +12,7 @@ new-terminal = Новий термінал
 color-schemes = Кольорові схеми
 rename = Перейменувати
 export = Експорт
-delete = Вилучити
+delete = Видалити
 import = Імпортувати
 import-errors = Помилки імпорту
 
@@ -36,9 +36,9 @@ settings = Налаштування
 
 ### Appearance
 
-appearance = Зовнішній вигляд
+appearance = Вигляд
 theme = Тема
-match-desktop = Відповідно системі
+match-desktop = Системна
 dark = Темна
 light = Світла
 syntax-dark = Темна колірна схема
@@ -60,14 +60,14 @@ use-bright-bold = Зробити жирний текст яскравішим
 
 ### Splits
 
-splits = Розділення
+splits = Розділити
 focus-follow-mouse = Фокус введення слідує за мишею
 
 ### Advanced
 
 advanced = Додатково
 show-headerbar = Показувати заголовок
-show-header-description = Перемикач приховування заголовка є в контекстному меню правої кнопки миші.
+show-header-description = Показати заголовок через контекстне меню правої кнопки миші
 # Find
 find-placeholder = Знайти...
 find-previous = Знайти попередній
@@ -96,10 +96,10 @@ find = Знайти
 
 ## View
 
-view = Вигляд
-zoom-in = Збільшити текст
-zoom-reset = Типовий розмір тексту
-zoom-out = Зменшити текст
+view = Вид
+zoom-in = Збільшити
+zoom-reset = Звичайний розмір
+zoom-out = Зменшити
 next-tab = Наступна вкладка
 previous-tab = Попередня вкладка
 split-horizontal = Розділити горизонтально
@@ -108,12 +108,44 @@ pane-toggle-maximize = Перемкнути розгортання
 menu-color-schemes = Кольорові схеми...
 menu-settings = Налаштування...
 menu-about = Про Термінал...
-repository = Репозиторій
+repository = Сховище
 support = Підтримка
-clear-scrollback = Очистити журнал прокрутки
+clear-scrollback = Очистити прокрутку
 menu-password-manager = Паролі...
 passwords-title = Паролі
 add-password = Додати пароль
 password-input = Пароль
 password-input-description = Опис
 open-link = Відкрити ланку
+cancel = Скасувати
+close-window = Закрити вікно
+disable = Вимкнути
+keyboard-shortcuts = Сполучення клавіш
+menu-keyboard-shortcuts = Сполучення клавіш...
+password-manager = Менеджер паролів
+replace = Замінити
+reset-to-default = Відновити
+shortcut-group-tabs = Вкладки
+shortcut-group-window = Вікно
+shortcut-replace-body = { $binding } вже призначено { $existing }. Замінити на { $new_action }?
+shortcut-replace-title = Замінити сполучення?
+type-to-search = Введіть для пошуку…
+copy-or-sigint = Копіювати або SIGINT
+no-shortcuts = Не призначено
+paste-primary = Вставити основне
+shortcut-capture-hint = Натисніть комбінацію клавіш
+shortcut-group-clipboard = Буфер обміну
+shortcut-group-other = Інше
+shortcut-group-zoom = Масштаб
+tab-activate = Вибрати вкладку { $number }
+toggle-fullscreen = На весь екран
+add-another-keybinding = Додати ще сполучення
+focus-pane-down = Фокус на нижню панель
+focus-pane-left = Фокус на ліву панель
+focus-pane-right = Фокус на праву панель
+focus-pane-up = Фокус на верхню панель
+comment = Емулятор терміналу для середовища COSMIC
+keywords = Команда;Оболонка;Термінал;Інтерфейс;CLI;
+copy-link = Копіювати ланку
+tab-new-inherit-working-directory = У нових вкладках використовується поточний каталог
+tab-new-inherit-working-directory-description = Відкривати нові вкладки в робочому каталозі активної вкладки

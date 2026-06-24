@@ -1,4 +1,6 @@
 cosmic-terminal = Terminal
+comment = Emulador de terminal do desktop COSMIC
+keywords = Comando;Shell;Terminal;Console;
 new-terminal = Novo terminal
 
 # Context Pages
@@ -111,3 +113,4 @@ menu-about = Acerca do Terminal...
 repository = Repositório
 support = Suporte
 clear-scrollback = Limpar scrollback
+cancel = Cancelar

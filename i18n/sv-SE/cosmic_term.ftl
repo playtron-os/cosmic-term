@@ -1,4 +1,6 @@
 cosmic-terminal = Terminal
+comment = Terminalemulator för skrivbordsmiljön COSMIC
+keywords = Kommando;Skal;Terminal;CLI;Konsol;
 new-terminal = Ny terminal
 
 # Context Pages
@@ -67,7 +69,7 @@ focus-follow-mouse = Skrivfokus följer mus
 
 advanced = Avancerat
 show-headerbar = Visa rubrikrad
-show-header-description = Visa rubrikrad från högerklicksmenyn.
+show-header-description = Visa rubrikrad från högerklicksmenyn
 # Sök
 find-placeholder = Sök…
 find-previous = Sök föregående
@@ -121,3 +123,33 @@ passwords-title = Lösenord
 add-password = Lägg till lösenord
 password-input = Lösenord
 password-input-description = Beskrivning
+type-to-search = Skriv för att söka...
+cancel = Avbryt
+close-window = Stäng fönster
+copy-or-sigint = Kopiera eller SIGINT
+disable = Avaktivera
+password-manager = Lösenordshanterare
+replace = Ersätt
+shortcut-capture-hint = Tryck tangentkombinationen
+shortcut-group-window = Fönster
+shortcut-replace-body = { $binding } har redan tilldelats till { $existing }. Ersätt den med { $new_action }?
+shortcut-replace-title = Ersätt genväg?
+tab-activate = Aktivera flik { $number }
+toggle-fullscreen = Växla helskärmsläge
+add-another-keybinding = Lägg till ytterligare tangentbindning
+focus-pane-down = Fokusera fält nedåt
+focus-pane-left = Fokusera fält vänster
+focus-pane-right = Fokusera fält höger
+focus-pane-up = Fokusera fält uppåt
+keyboard-shortcuts = Tangentbordsgenvägar
+menu-keyboard-shortcuts = Tangentbordsgenvägar...
+no-shortcuts = Inga genvägar
+paste-primary = Klistra in primär
+reset-to-default = Återställ till standard
+shortcut-group-clipboard = Urklipp
+shortcut-group-other = Andra
+shortcut-group-tabs = Flikar
+shortcut-group-zoom = Zooma
+copy-link = Kopiera länk
+tab-new-inherit-working-directory-description = Öppna nya flikar i den aktiva flikens arbetskatalog
+tab-new-inherit-working-directory = Nya flikar använder aktuell katalog
