@@ -32,7 +32,7 @@ fn ink(dark: bool, alpha: u8) -> Color {
 /// Shared icetron dropdown container style — matches the header menu
 /// (elevated surface white/#1e1e1e, 8% border, radii_md corners), adapts dark/light.
 fn menu_container_style(theme: &cosmic::Theme) -> widget::container::Style {
-    let dark = theme.cosmic().is_dark;
+    let dark = theme.theme_type.is_dark();
     let surface = if dark {
         Color::from_rgb8(30, 30, 30)
     } else {
@@ -75,7 +75,7 @@ pub fn context_menu<'a>(
     fn key_style(theme: &cosmic::Theme) -> TextStyle {
         // icetron text_tertiary (42%) for shortcut hints, adapts dark/light
         TextStyle {
-            color: Some(ink(theme.cosmic().is_dark, 107)),
+            color: Some(ink(theme.theme_type.is_dark(), 107)),
             ..Default::default()
         }
     }
