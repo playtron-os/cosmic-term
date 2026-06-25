@@ -1,3 +1,41 @@
+# [1.2.0](https://github.com/playtron-os/cosmic-term/compare/v1.1.3...v1.2.0) (2026-06-25)
+
+
+### Bug Fixes
+
+* avoid re-reading system theme from disk on every menu bar render ([18b4450](https://github.com/playtron-os/cosmic-term/commit/18b4450c0f3fbe3a35ca7ad3230cda7e7091712e))
+* avoid unnecessary shape-until-cursor at start-up ([6793881](https://github.com/playtron-os/cosmic-term/commit/67938814b6c46d3a6b871d154891747b3f949cb0))
+* change zoom reset scope to active tab ([f689040](https://github.com/playtron-os/cosmic-term/commit/f689040c9c74944ac54c00a58ee76846baa1cff8))
+* clippy lint ([d413fdb](https://github.com/playtron-os/cosmic-term/commit/d413fdb593cd2e3bb26c6177a944e7a4c26fcea8))
+* context menu by disabling IME when the widget has context menu ([1963929](https://github.com/playtron-os/cosmic-term/commit/1963929e052a84e3812f7ea5bbcea8faeace6e89))
+* dismiss context menu when clicking in any pane ([133c526](https://github.com/playtron-os/cosmic-term/commit/133c526acd12e50f4ff53228986c7011f931455f))
+* do not drop scrolling events from smooth scrolling mice ([124931f](https://github.com/playtron-os/cosmic-term/commit/124931faff8e136f5f639229e8af62063ed09e40))
+* don't capture all mouse events ([e37f73d](https://github.com/playtron-os/cosmic-term/commit/e37f73dcbb75cdf282981580c8d006177d6cdb2a))
+* fix the one pixel wide gap between panes ([8ae5918](https://github.com/playtron-os/cosmic-term/commit/8ae5918ccd15844a822eb63c091625b8ac798b2b))
+* gate wayland features and add inline popover fallback ([8b95675](https://github.com/playtron-os/cosmic-term/commit/8b95675c9b6ffe0eb28910c097c129af4b1689e1))
+* increase menu width to prevent cutting off toggle maximized ([260bb79](https://github.com/playtron-os/cosmic-term/commit/260bb7972861612f62486154c1d82d8e904890ca))
+* keep the url in state for menu actions and underline ([1d86974](https://github.com/playtron-os/cosmic-term/commit/1d869746827c877ac665b7ceba7f93db9719596a))
+* libcosmic updates ([512cc0d](https://github.com/playtron-os/cosmic-term/commit/512cc0d2509e59c4d961c0194741eddbb74193ee))
+* **libcosmic:** fix item highlight in wayland context menu ([f5cbed0](https://github.com/playtron-os/cosmic-term/commit/f5cbed08d68c60874923797733c768f5b1ab8bc3))
+* menu doesn't show by unfocusing when clicking outside of the terminal_box ([c22d1cc](https://github.com/playtron-os/cosmic-term/commit/c22d1ccc28b6e9ecc68f688e311abefedab7352f))
+* **menu:** icetron context-menu styling + smaller toggle ([7bf3435](https://github.com/playtron-os/cosmic-term/commit/7bf34351c2ed6b660385ca474f8f4e9eed99f9b3))
+* merge profile and startup options ([75cfa52](https://github.com/playtron-os/cosmic-term/commit/75cfa526730dddb361161e724fdc8e2db67208e3))
+* only send "space" to the focused pane ([1428345](https://github.com/playtron-os/cosmic-term/commit/1428345cad272f4fd2a7c52cc434ecc8d10546c3))
+* prevent crash when splits are resized too small ([9ed56eb](https://github.com/playtron-os/cosmic-term/commit/9ed56eb2db29e6d31948f1b1c908acbb44972a30))
+* send the correct up/down code in APP_CURSOR mode ([02d977a](https://github.com/playtron-os/cosmic-term/commit/02d977ac4d1127174f4c77b25bfada14edcce3aa))
+* **style:** add the background color to that tab bar ([8203b1e](https://github.com/playtron-os/cosmic-term/commit/8203b1e23322eda28432c2154e2c57a7eef53f87))
+* **theme:** respect light mode in context-menu chrome ([f404ecc](https://github.com/playtron-os/cosmic-term/commit/f404ecc8799a2060baad791203c919931b0d08ed))
+* use window-absolute coordinates for context menu position in split panes ([0b1490e](https://github.com/playtron-os/cosmic-term/commit/0b1490e7ffae687ea29a1cd2c45d9051c3833a28))
+
+
+### Features
+
+* add `--working-directory` arg ([5fedabd](https://github.com/playtron-os/cosmic-term/commit/5fedabd9f59d1d3825ee597d378d9f2fc20f210a))
+* Convert context menu from widget::popover to Wayland popup surface ([0575680](https://github.com/playtron-os/cosmic-term/commit/057568086009c6971933fc11899e7cf6a833ce0c))
+* option to open new windows in the current directory ([91fd140](https://github.com/playtron-os/cosmic-term/commit/91fd140ae371498bd2cd3fa86e5a9acd02a02f16))
+* rebase libcosmic onto iced 0.14 ([f62abce](https://github.com/playtron-os/cosmic-term/commit/f62abcea4efbcd824297b269279826699c47d335))
+* tab dnd ([54b9974](https://github.com/playtron-os/cosmic-term/commit/54b99741e8911e382b4e5e7ae22709319b928310))
+
 ## [1.1.3](https://github.com/playtron-os/cosmic-term/compare/v1.1.2...v1.1.3) (2026-06-02)
 
 
