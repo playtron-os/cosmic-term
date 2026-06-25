@@ -1,4 +1,4 @@
-ARG version=1.92
+ARG version=1.96
 FROM rust:${version}
 ARG version
 
