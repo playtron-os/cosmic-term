@@ -8,7 +8,7 @@ use cosmic::{
     Element,
     app::Core,
     iced::core::Border,
-    iced::{Background, Length, advanced::widget::text::Style as TextStyle},
+    iced::{Background, Color, Length, advanced::widget::text::Style as TextStyle},
     theme,
     widget::{
         self, divider,
@@ -22,6 +22,34 @@ use crate::{Action, ColorSchemeId, ColorSchemeKind, Config, Message, fl};
 
 static MENU_ID: LazyLock<cosmic::widget::Id> =
     LazyLock::new(|| cosmic::widget::Id::new("responsive-menu"));
+
+/// icetron mode-aware ink: white at `alpha`/255 in dark mode, black in light.
+fn ink(dark: bool, alpha: u8) -> Color {
+    let c = if dark { 1.0 } else { 0.0 };
+    Color::from_rgba(c, c, c, f32::from(alpha) / 255.0)
+}
+
+/// Shared icetron dropdown container style — matches the header menu
+/// (elevated surface white/#1e1e1e, 8% border, radii_md corners), adapts dark/light.
+fn menu_container_style(theme: &cosmic::Theme) -> widget::container::Style {
+    let dark = theme.cosmic().is_dark;
+    let surface = if dark {
+        Color::from_rgb8(30, 30, 30)
+    } else {
+        Color::WHITE
+    };
+    widget::container::Style {
+        icon_color: Some(ink(dark, 222)),
+        text_color: Some(ink(dark, 222)),
+        background: Some(Background::Color(surface)),
+        border: Border {
+            radius: 8.0.into(),
+            width: 1.0,
+            color: ink(dark, 20),
+        },
+        ..Default::default()
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct MenuState {
@@ -45,10 +73,9 @@ pub fn context_menu<'a>(
         String::new()
     };
     fn key_style(theme: &cosmic::Theme) -> TextStyle {
-        let mut color = theme.cosmic().background.component.on;
-        color.alpha *= 0.75;
+        // icetron text_tertiary (42%) for shortcut hints, adapts dark/light
         TextStyle {
-            color: Some(color.into()),
+            color: Some(ink(theme.cosmic().is_dark, 107)),
             ..Default::default()
         }
     }
@@ -71,6 +98,7 @@ pub fn context_menu<'a>(
             widget::space::horizontal().into(),
             widget::toggler(value)
                 .on_toggle(move |_| Message::TabContextAction(entity, action))
+                // 16px-tall toggle, centered in the 32px menu row (size == height)
                 .size(16.0)
                 .into(),
         ])
@@ -125,23 +153,11 @@ pub fn context_menu<'a>(
     }
     let content = Column::with_children(rows);
     widget::container(content)
-        .padding(1)
-        //TODO: move style to libcosmic
-        .style(|theme| {
-            let cosmic = theme.cosmic();
-            let component = &cosmic.background.component;
-            widget::container::Style {
-                icon_color: Some(component.on.into()),
-                text_color: Some(component.on.into()),
-                background: Some(Background::Color(component.base.into())),
-                border: Border {
-                    radius: cosmic.radius_s().map(|x| x + 1.0).into(),
-                    width: 1.0,
-                    color: component.divider.into(),
-                },
-                ..Default::default()
-            }
-        })
+        // icetron dropdown: spacing_1 (4px) top/bottom breathing room; items span
+        // the full width (no horizontal inset, like icetron) — only 1px sides so
+        // the rows sit inside the border.
+        .padding([4, 1])
+        .style(menu_container_style)
         .width(Length::Fixed(360.0))
         .into()
 }
@@ -173,23 +189,11 @@ pub fn color_scheme_menu<'a>(
     }
 
     widget::container(column)
-        .padding(1)
-        //TODO: move style to libcosmic
-        .style(|theme| {
-            let cosmic = theme.cosmic();
-            let component = &cosmic.background.component;
-            widget::container::Style {
-                icon_color: Some(component.on.into()),
-                text_color: Some(component.on.into()),
-                background: Some(Background::Color(component.base.into())),
-                border: Border {
-                    radius: cosmic.radius_s().map(|x| x + 1.0).into(),
-                    width: 1.0,
-                    color: component.divider.into(),
-                },
-                ..Default::default()
-            }
-        })
+        // icetron dropdown: spacing_1 (4px) top/bottom breathing room; items span
+        // the full width (no horizontal inset, like icetron) — only 1px sides so
+        // the rows sit inside the border.
+        .padding([4, 1])
+        .style(menu_container_style)
         .width(Length::Fixed(120.0))
         .into()
 }
