@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/playtron-os/cosmic-term/compare/v1.2.0...v1.2.1) (2026-06-26)
+
+
+### Bug Fixes
+
+* make release CI pass ([f913c2a](https://github.com/playtron-os/cosmic-term/commit/f913c2a99beff4f7313fa870d8d78c6bfa70e1a7))
+
 # [1.2.0](https://github.com/playtron-os/cosmic-term/compare/v1.1.3...v1.2.0) (2026-06-25)
 
 
