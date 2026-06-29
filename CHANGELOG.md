@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/playtron-os/cosmic-term/compare/v1.2.1...v1.2.2) (2026-06-29)
+
+
+### Bug Fixes
+
+* lighten requirements on rpm spec ([4c9d9cf](https://github.com/playtron-os/cosmic-term/commit/4c9d9cf01018a50c9e77b14af5952464cdbe5e8f))
+
 ## [1.2.1](https://github.com/playtron-os/cosmic-term/compare/v1.2.0...v1.2.1) (2026-06-26)
 
 
