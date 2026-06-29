@@ -10,8 +10,9 @@ Source0:        %{name}-%{_arch}.tar.gz
 
 # No BuildRequires - binary is pre-built
 
-# cosmic-icon-theme is the only explicit dependency (like upstream)
-Requires:       (cosmic-icon-theme >= 1.0.0 with cosmic-icon-theme < 1.1.0)
+# cosmic-icon-theme is the only explicit dependency (like upstream); noarch icon
+# assets with no ABI coupling — bind to COSMIC 1.x (< 2.0.0), not a single minor.
+Requires:       (cosmic-icon-theme >= 1.0.0 with cosmic-icon-theme < 2.0.0)
 
 %description
 Terminal emulator for the COSMIC desktop environment.
