@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/playtron-os/cosmic-term/compare/v1.2.3...v1.2.4) (2026-07-09)
+
+
+### Bug Fixes
+
+* address issues with color mode setting ([121596c](https://github.com/playtron-os/cosmic-term/commit/121596c72a2c407494cb76c60412a49d55755ebd))
+
 ## [1.2.3](https://github.com/playtron-os/cosmic-term/compare/v1.2.2...v1.2.3) (2026-07-02)
 
 
