@@ -37,7 +37,19 @@ impl AppTheme {
                 t.theme_type.prefer_dark(Some(false));
                 t
             }
-            Self::System => theme::system_preference(),
+            Self::System => {
+                // `system_preference()` tags the theme with an explicit
+                // `prefer_dark` override. libcosmic treats a `Some(..)`
+                // preference as a manual selection and drops live system
+                // color-mode changes (both the `SystemThemeModeChange` config
+                // watcher and the xdg-portal `ColorScheme` handler early-return
+                // while `prefer_dark.is_some()`). For "match desktop" we want to
+                // keep following the system, so clear the override. The loaded
+                // theme still reports dark/light correctly via `is_dark()`.
+                let mut t = theme::system_preference();
+                t.theme_type.prefer_dark(None);
+                t
+            }
         }
     }
 }

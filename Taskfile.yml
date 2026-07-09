@@ -61,7 +61,7 @@ tasks:
         error,agentos_panel=info
         {{- end }}
     cmds:
-      - ./target/{{.TARGET_ARCH}}/debug/{{.NAME}}
+      - ./target/{{.TARGET_ARCH}}/debug/{{.NAME}} --no-daemon
 
   dist:prepare:
     desc: Prepare the project for packaging

@@ -689,6 +689,20 @@ impl App {
         self.shortcut_search_value.clear();
     }
 
+    // Color scheme kind (dark/light) for the terminal contents.
+    //
+    // Always derive it from the configured app theme so the terminal color
+    // scheme (foreground/ANSI colors) stays consistent with the window
+    // background and header chrome, which also follow `app_theme`. Reading it
+    // from `core.system_theme()` instead can diverge: that value ignores an
+    // explicit Dark/Light app-theme override, and can be left stale when a live
+    // system mode change is dropped — producing a mismatched terminal (e.g. a
+    // light color scheme on a dark background).
+    fn color_scheme_kind(&self) -> ColorSchemeKind {
+        self.config
+            .color_scheme_kind(&self.config.app_theme.theme())
+    }
+
     fn update_config(&mut self) -> Task<Message> {
         let theme = self.config.app_theme.theme();
 
@@ -732,7 +746,7 @@ impl App {
         // skip writing config to fs when zoom in/ out
         // recalculate the pane due to the changes of zoom_adj value
         // but only for the active pane/tab
-        let color_scheme_kind = self.config.color_scheme_kind(self.core.system_theme());
+        let color_scheme_kind = self.color_scheme_kind();
         if let Some(tab_model) = self.pane_model.active() {
             for entity in tab_model.iter() {
                 if tab_model.is_active(entity)
@@ -1577,7 +1591,7 @@ impl App {
         self.pane_model.set_focus(pane);
         match &self.term_event_tx_opt {
             Some(term_event_tx) => {
-                let color_scheme_kind = self.config.color_scheme_kind(self.core.system_theme());
+                let color_scheme_kind = self.color_scheme_kind();
                 let colors = self
                     .themes
                     .get(&self.config.syntax_theme(color_scheme_kind, profile_id_opt))
