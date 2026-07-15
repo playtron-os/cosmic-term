@@ -691,20 +691,32 @@ impl App {
 
     // Color scheme kind (dark/light) for the terminal contents.
     //
-    // Always derive it from the configured app theme so the terminal color
-    // scheme (foreground/ANSI colors) stays consistent with the window
-    // background and header chrome, which also follow `app_theme`. Reading it
-    // from `core.system_theme()` instead can diverge: that value ignores an
-    // explicit Dark/Light app-theme override, and can be left stale when a live
-    // system mode change is dropped — producing a mismatched terminal (e.g. a
-    // light color scheme on a dark background).
+    // For an explicit Dark/Light app theme the setting fixes this. For "match
+    // desktop" (`AppTheme::System`) we must follow the *same* resolved value
+    // libcosmic uses to paint the window chrome/header — `core.system_theme()`,
+    // which honours the xdg-portal `color-scheme` (`core.system_is_dark()`
+    // prefers the portal over cosmic-config `ThemeMode`). Deriving it
+    // independently from `app_theme.theme()` (i.e. `system_preference()`, which
+    // reads `ThemeMode` only and ignores the portal) lets the terminal body
+    // disagree with the header whenever the portal and `ThemeMode` differ — the
+    // header follows the portal while the body stays on `ThemeMode`.
+    // `Config::color_scheme_kind` returns Dark/Light directly for the explicit
+    // app themes, so the passed system theme only matters for `System`.
     fn color_scheme_kind(&self) -> ColorSchemeKind {
-        self.config
-            .color_scheme_kind(&self.config.app_theme.theme())
+        self.config.color_scheme_kind(self.core.system_theme())
     }
 
     fn update_config(&mut self) -> Task<Message> {
-        let theme = self.config.app_theme.theme();
+        // For "match desktop" follow the libcosmic-resolved system theme (which
+        // honours the xdg-portal color-scheme) so the window background, header
+        // chrome and terminal colors all stay in the same mode. For an explicit
+        // Dark/Light app theme use that theme directly, since an explicit
+        // override is applied to the global theme only and is not reflected in
+        // `core.system_theme()`.
+        let theme = match self.config.app_theme {
+            AppTheme::System => self.core.system_theme().clone(),
+            _ => self.config.app_theme.theme(),
+        };
 
         // Update color schemes
         self.update_color_schemes();
