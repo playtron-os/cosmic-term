@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/playtron-os/cosmic-term/compare/v1.2.4...v1.2.5) (2026-07-20)
+
+
+### Bug Fixes
+
+* **password-manager:** remove stale header when deleting a password ([1c103f5](https://github.com/playtron-os/cosmic-term/commit/1c103f5a6e7791c2027e2862de037655581844b0))
+
 ## [1.2.4](https://github.com/playtron-os/cosmic-term/compare/v1.2.3...v1.2.4) (2026-07-09)
 
 
