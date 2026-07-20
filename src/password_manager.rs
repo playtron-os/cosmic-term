@@ -186,7 +186,19 @@ impl PasswordManager {
     pub fn delete_password(&mut self, identifier: String) -> Task<cosmic::Action<Message>> {
         if self.expanded_entry.as_ref() == Some(&identifier) {
             self.expanded_entry = None;
+            self.input_state = None;
         }
+
+        // Remove the entry from the local list right away so no stale header is
+        // left behind while the async store deletion / refresh is in flight.
+        self.password_list.retain(|id| id != &identifier);
+
+        // A blank identifier is an unsaved "New" placeholder that was never
+        // persisted, so there is nothing to delete from the secret store.
+        if identifier.is_empty() {
+            return Task::none();
+        }
+
         cosmic::task::future(async move {
             if let Err(err) = store::delete_password(identifier.clone()).await {
                 return Message::PasswordManager(PasswordManagerMessage::Error(format!(
