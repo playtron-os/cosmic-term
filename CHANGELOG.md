@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/playtron-os/cosmic-term/compare/v1.2.5...v1.2.6) (2026-07-27)
+
+
+### Bug Fixes
+
+* update libcosmic to fix theming ([0f360fc](https://github.com/playtron-os/cosmic-term/commit/0f360fcf9b75085fef890b38d57f067f4b4bf41f))
+
 ## [1.2.5](https://github.com/playtron-os/cosmic-term/compare/v1.2.4...v1.2.5) (2026-07-20)
 
 
