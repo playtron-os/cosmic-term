@@ -8,6 +8,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-term
 Source0:        %{name}-%{_arch}.tar.gz
 
+%global debug_package %{nil}
+
 # No BuildRequires - binary is pre-built
 
 # cosmic-icon-theme is the only explicit dependency (like upstream); noarch icon

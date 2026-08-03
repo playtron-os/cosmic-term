@@ -8,3 +8,4 @@ StartupNotify=true
 Icon=com.system76.CosmicTerm
 Categories=COSMIC;System;TerminalEmulator;
 Keywords=Command;Shell;Terminal;CLI;
+X-Playtron-IconStyle=fullcolor
