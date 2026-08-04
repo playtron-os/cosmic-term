@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/playtron-os/cosmic-term/compare/v1.2.6...v1.2.7) (2026-08-04)
+
+
+### Bug Fixes
+
+* update app icon ([0c8419d](https://github.com/playtron-os/cosmic-term/commit/0c8419d4f4ed2dfc7fc5599985d506489e090cc6))
+
 ## [1.2.6](https://github.com/playtron-os/cosmic-term/compare/v1.2.5...v1.2.6) (2026-07-27)
 
 
